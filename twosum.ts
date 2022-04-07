@@ -1,4 +1,4 @@
-const numsArray: number[] = [2, 1, 5, 3];
+const numsArray: number[] = [2, 14, 35, 11, 1, 8, 79, 3, 4, 99, 15, 22, 1, 5, 3];
 
 const twoSumSlow = (nums: number[], target: number): [number, number] => {
     const result: [number, number] = [0, 1];
@@ -35,4 +35,4 @@ const twoSum = (nums: number[], target: number) => {
     return result
 }
 
-twoSum(numsArray, 7);
+console.log(twoSum(numsArray, 7));
