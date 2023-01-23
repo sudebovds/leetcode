@@ -10,32 +10,32 @@
 
 const str: string = 'dvdf';
 
-const logestSubstringWiwhoutRepeatingCharacters = (str: string): number => {
-    let count: number = 0;
-    let longest: number = 1;
-    const map: string[] = [];
+//Sliding window method
 
-    if(str){
-        while(count <= str.length){
-            if(map.includes(str[count]) || str[count] === undefined){
-                console.log(map)
-                if(longest < map.length){
-                    longest = map.length;
-                    map.length = 0;
-                }
-                count++
-            }
-            else{
-                map.push(str[count]);
-                count++
-            }
+const longestSubstrSet = (str: string): number => {
+    if(str.length === 0) return 0;
+    if(str.length === 1) return 1;
+
+    let maxLength = 0;
+    const strMap: Record<string, number> = {};
+    const strLength = str.length;
+
+    let i = 0, j = 0;
+
+    while(j < strLength){
+        let char = str[j];
+
+        if(strMap.hasOwnProperty(char)){
+            i = Math.max(strMap[char], i)
         }
-    
-        return longest;
+
+        maxLength = Math.max(maxLength, j - i + 1);
+        strMap[char] = j + 1;
+
+        j++
     }
-    else{
-        return 0;
-    }
+
+    return maxLength;
 }
 
-console.log(logestSubstringWiwhoutRepeatingCharacters(str));
+console.log(longestSubstrSet(str));
